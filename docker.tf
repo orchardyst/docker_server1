@@ -1,17 +1,17 @@
 # configured aws provider with proper credentials
 provider "aws" {
   region = "us-east-1"
-  profile= "yusuf"
+  
 }
 
 # Create a remote backend for your terraform 
 terraform {
   backend "s3" {
-    bucket = "austinobioma-docker-tfstate"
+    bucket = "orchardyst-docker-tfstate"
     dynamodb_table = "app-state"
-    key    = "LockID"
+    key    = "Udemyclass2"
     region = "us-east-1"
-    profile = "austinobioma-realcloud"
+    
   }
 }
 
@@ -116,7 +116,7 @@ resource "aws_instance" "ec2_instance1" {
   instance_type          = "t2.micro"
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
-  key_name               = "Feb-Class"
+  key_name               = "Udemyclass2"
   user_data            = "${file("docker-install.sh")}"
 
   tags = {
